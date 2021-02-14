@@ -11,9 +11,9 @@
     <script>
         fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98')
             .then(function (data) {
-				stats = data.json();
+				stats = data.text();
 				
-                document.getElementById('myData').innerHTML = JSON.parse(stats);
+                document.getElementById('myData').innerHTML = stats;
             })
             .catch(function (err) {
                 console.log('error: ' + err);
