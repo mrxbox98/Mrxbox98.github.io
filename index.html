@@ -10,8 +10,9 @@
     <p id="myData"></p>
     <script>
         fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98')
-            .then(function (data) {
-                document.getElementById('myData').innerHTML = data.json();
+            .then(async function (data) {
+				stats = await data.json();
+                document.getElementById('myData').innerHTML = stats;
             })
             .catch(function (err) {
                 console.log('error: ' + err);
