@@ -13,9 +13,6 @@
             .then(function (response) {
                 appendData(response.json());
             })
-            .then(function (data) {
-                appendData(data);
-            })
             .catch(function (err) {
                 console.log('error: ' + err);
             });
