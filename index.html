@@ -11,7 +11,7 @@
     <script>
         fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98')
             .then(async function (data) {
-				stats = await data.text();
+				stats = await data.profiles.558e9790b46c4f339b3387859e47d596.bank;
 				
                 document.getElementById('myData').innerHTML = stats;
             })
