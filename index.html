@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<script>
-	function httpGet(theUrl)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-		xmlHttp.send( null );
-		return xmlHttp.responseText;
-	}
-</script>
-<style>
-	.title {
-		color: blue;
-	}
-</style>
-<html>
-	<main>
-		<h1 class='title'>
-			Test
-		</h1>
-		<button type="button" onclick="document.getElementById('Test').innerHTML = fetch(https://sky.shiiyu.moe/api/v2/coins/Mrxbox98)">
-			Click to display bank info
-		</button>
-		<p id="Test">
-		</p>
-	</main>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON Test</title>
+</head>
+<body>
+    <p id="myData"></p>
+    <script>
+        fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98')
+            .then(function (response) {
+                appendData(response.json());
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            document.getElementById('myData').innerHTML = data;
+        }
+    </script>
+</body>
 </html>
