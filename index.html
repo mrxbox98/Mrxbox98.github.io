@@ -11,14 +11,12 @@
     <script>
         fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98')
             .then(function (response) {
-                appendData(response);
+                document.getElementById('myData').innerHTML = response;
             })
             .catch(function (err) {
                 console.log('error: ' + err);
             });
-        function appendData(data) {
-            document.getElementById('myData').innerHTML = data;
-        }
+        
     </script>
 </body>
 </html>
