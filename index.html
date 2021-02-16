@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<script>
+function displayInfo()
+{
+	fetch('https://sky.shiiyu.moe/api/v2/coins/' + document.getElementById('username').value + '/' + document.getElementById('profile').value)
+		.then(async function (data) {
+			let stats = await data.text()
+			document.getElementById('DataTest').innerHTML = stats;
+		})
+		.catch(function (error)
+		{
+			console.log(error);
+		});
+	
+}
+</script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,13 +22,23 @@
     <title>JSON Test</title>
 </head>
 <body>
+	<input type="text" id="username" placeholder="IGN"></input>
+	
+	<input type="text" id="profile" placeholder="Profile"></input>
+	
+	<br>
+	
+    <button  onclick="displayInfo()">Submit</button>
+	<p id="DataTest"></p>
     <p id="myData"></p>
     <script>
-        fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98')
+        fetch('https://sky.shiiyu.moe/api/v2/coins/Mrxbox98/Lime')
             .then(async function (data) {
-				stats = await data.profiles.text();
-				
-                document.getElementById('myData').innerHTML = stats;
+                let stats = await data.text();
+                console.log(stats);
+                let json = JSON.parse(stats);
+                console.table(json);
+                document.getElementById('myData').innerHTML = json['bank'];
             })
             .catch(function (err) {
                 console.log('error: ' + err);
